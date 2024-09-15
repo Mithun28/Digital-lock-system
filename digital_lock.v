@@ -66,7 +66,6 @@ module tb_digital_lock_system;
   // Clock generation
   always #5 clk = ~clk;  // Clock with a period of 10 time units
 
-  // Test Sequence
   initial begin
     // Initialize inputs
     clk = 0;
@@ -74,7 +73,6 @@ module tb_digital_lock_system;
     sel = 0;
     user_input = 4'b0000;
 
-    // Reset the system
     #10 reset = 0;
     #10 reset = 1;
 
@@ -88,7 +86,6 @@ module tb_digital_lock_system;
     sel = 1;
     #10;
 
-    // Display the result
     if (lock_open)
       $display("Lock Opened: Correct PIN Entered.");
     else
@@ -107,13 +104,11 @@ module tb_digital_lock_system;
     #10 sel = 1;
     #10;
 
-    // Display the result
     if (lock_open)
       $display("Lock Opened: Correct PIN Entered.");
     else
       $display("Lock Closed: Incorrect PIN Entered.");
 
-    // End simulation
     #10 $finish;
   end
 endmodule
